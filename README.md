@@ -1,2 +1,2 @@
-# AngularTesting
-A place to test angular and Esri ArcGIS
+# Angular Testing Repo
+A private place to test Angular and Esri ArcGIS
