@@ -1,5 +1,14 @@
-<h1>{{ title }}</h1>
-<p>{{ desc }}</p>
+<h1>{{ title | uppercase }}</h1>
+<input type="text" #titleField (keyup.enter)="onClickMe(titleField.value)">
+<button type="button" (click)="onClickMe(titleField.value)">Set title</button>
+<br><br><br>
 <input type="text" (keyup)="onKey($event)">
-<button type="button" (click)="onClickMe('this is a test')">Set title</button>
-<router-outlet></router-outlet>
+<p>{{ desc }}</p>
+<br><br><br>
+<h2>Value: {{ val }}</h2>
+<button (click)="dec()">-</button>
+<button (click)="inc()">+</button>
+<br><br>
+<ul>
+  <li *ngFor="let item of arr">{{ item }}</li>
+</ul>
