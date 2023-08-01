@@ -1,0 +1,5 @@
+<h1>{{ title }}</h1>
+<p>{{ desc }}</p>
+<input type="text" (keyup)="onKey($event)">
+<button type="button" (click)="onClickMe('this is a test')">Set title</button>
+<router-outlet></router-outlet>
