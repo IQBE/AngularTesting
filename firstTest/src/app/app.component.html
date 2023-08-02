@@ -1,14 +1,21 @@
-<h1>{{ title | uppercase }}</h1>
-<input type="text" #titleField (keyup.enter)="onClickMe(titleField.value)">
-<button type="button" (click)="onClickMe(titleField.value)">Set title</button>
-<br><br><br>
-<input type="text" (keyup)="onKey($event)">
-<p>{{ desc }}</p>
-<br><br><br>
-<h2>Value: {{ val }}</h2>
-<button (click)="dec()">-</button>
-<button (click)="inc()">+</button>
-<br><br>
-<ul>
-  <li *ngFor="let item of arr">{{ item }}</li>
-</ul>
+<nav>
+  <div>
+    <h1>Angular test site</h1>
+  </div>
+  <div class="menu">
+    <a routerLink="/test" routerLinkActive="active" ariaCurrentWhenActive="page"
+      >Test</a
+    >
+    <a routerLink="/map" routerLinkActive="active" ariaCurrentWhenActive="page"
+      >Map</a
+    >
+    <a
+      routerLink="/geojson"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >GeoJSON</a
+    >
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
