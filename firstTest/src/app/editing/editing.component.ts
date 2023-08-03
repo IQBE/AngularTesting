@@ -1,9 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import ArcConf from '../../config/esri-config.json';
 import EsriConfig from '@arcgis/core/config';
-import { generateMap } from './functions/mapGeneration';
-import { generateAlertLayer } from './functions/alertLayerGeneration';
 import { GeoJsonObject } from 'geojson';
+
+import Legend from '@arcgis/core/widgets/Legend';
+
+import { generateMap } from './functions/mapGeneration';
+import { generateGeoJSONLayer } from './functions/geojsonLayerGeneration';
+import { generateEditor } from './functions/editorGeneration';
 
 import data from '../../data/test.geojson.json';
 
@@ -12,7 +16,7 @@ import data from '../../data/test.geojson.json';
   templateUrl: './editing.component.html',
   styleUrls: ['./editing.component.css'],
 })
-export class EditingComponent implements OnInit {
+export class EditingComponent implements AfterViewInit {
   @ViewChild('mapViewDiv', { static: true }) private mapViewEl!: ElementRef;
 
   constructor() {
@@ -20,8 +24,13 @@ export class EditingComponent implements OnInit {
     EsriConfig.applicationName = ArcConf.applicationName;
   }
 
-  ngOnInit(): void {
-    const { map } = generateMap(this.mapViewEl);
-    const { alertLayer } = generateAlertLayer(map, data as GeoJsonObject);
+  ngAfterViewInit(): void {
+    const { map, mapView, legend } = generateMap(this.mapViewEl);
+    const alertLayer = generateGeoJSONLayer(
+      'alertLayer',
+      map,
+      data as GeoJsonObject
+    );
+    const editor = generateEditor(mapView, alertLayer);
   }
 }

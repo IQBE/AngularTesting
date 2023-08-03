@@ -2,6 +2,8 @@ import { ElementRef } from '@angular/core';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 
+import { generateLegend } from './legendGeneration';
+
 export const generateMap = (mapViewEl: ElementRef) => {
   const map: Map = new Map({
     basemap: 'arcgis-topographic',
@@ -14,5 +16,7 @@ export const generateMap = (mapViewEl: ElementRef) => {
     zoom: 8,
   });
 
-  return { map, mapView };
+  const legend = generateLegend(mapView);
+
+  return { map, mapView, legend };
 };
