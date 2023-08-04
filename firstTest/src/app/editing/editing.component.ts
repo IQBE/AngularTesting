@@ -3,13 +3,13 @@ import ArcConf from '../../config/esri-config.json';
 import EsriConfig from '@arcgis/core/config';
 import { GeoJsonObject } from 'geojson';
 
-import Legend from '@arcgis/core/widgets/Legend';
-
 import { generateMap } from './functions/mapGeneration';
 import { generateGeoJSONLayer } from './functions/geojsonLayerGeneration';
 import { generateEditor } from './functions/editorGeneration';
+import { handleEdit } from './functions/handleEdits';
 
 import data from '../../data/test.geojson.json';
+import Map from '@arcgis/core/Map';
 
 @Component({
   selector: 'app-editing',

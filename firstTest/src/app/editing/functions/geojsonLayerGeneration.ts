@@ -6,6 +6,7 @@ import {
   popupTemplate,
   renderer,
 } from 'src/app/shared/map/renderers';
+import { handleEdit } from './handleEdits';
 
 export const generateGeoJSONLayer = (
   title: string,
@@ -24,6 +25,10 @@ export const generateGeoJSONLayer = (
     labelingInfo: [labelClass],
     popupTemplate: popupTemplate,
     editingEnabled: true,
+  });
+
+  layer.on('edits', (evt) => {
+    handleEdit(evt);
   });
 
   map.add(layer);
