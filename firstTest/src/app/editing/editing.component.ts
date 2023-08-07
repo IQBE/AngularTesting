@@ -6,10 +6,9 @@ import { GeoJsonObject } from 'geojson';
 import { generateMap } from './functions/mapGeneration';
 import { generateGeoJSONLayer } from './functions/geojsonLayerGeneration';
 import { generateEditor } from './functions/editorGeneration';
-import { handleEdit } from './functions/handleEdits';
 
 import data from '../../data/test.geojson.json';
-import Map from '@arcgis/core/Map';
+import { generateSearch } from './functions/searchGeneration';
 
 @Component({
   selector: 'app-editing',
@@ -32,5 +31,6 @@ export class EditingComponent implements AfterViewInit {
       data as GeoJsonObject
     );
     const editor = generateEditor(mapView, alertLayer);
+    const search = generateSearch(mapView);
   }
 }
