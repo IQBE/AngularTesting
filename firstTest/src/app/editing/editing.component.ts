@@ -9,6 +9,7 @@ import { generateEditor } from './functions/editorGeneration';
 
 import data from '../../data/test.geojson.json';
 import { generateSearch } from './functions/searchGeneration';
+import { generateCompass } from './functions/compassGeneration';
 
 @Component({
   selector: 'app-editing',
@@ -32,5 +33,6 @@ export class EditingComponent implements AfterViewInit {
     );
     const editor = generateEditor(mapView, alertLayer);
     const search = generateSearch(mapView);
+    const compass = generateCompass(mapView);
   }
 }

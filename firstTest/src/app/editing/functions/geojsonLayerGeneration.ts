@@ -21,14 +21,33 @@ export const generateGeoJSONLayer = (
   const layer: GeoJSONLayer = new GeoJSONLayer({
     title: title,
     url: url,
+    fields: [
+      {
+        name: 'id',
+        type: 'oid',
+      },
+      {
+        name: 'ssp_id',
+        type: 'string',
+      },
+      {
+        name: 'sheetnr',
+        type: 'string',
+      },
+      {
+        name: 'highlight',
+        type: 'integer',
+      },
+    ],
     renderer: renderer,
     labelingInfo: [labelClass],
-    popupTemplate: popupTemplate,
+    // popupTemplate: popupTemplate,
     editingEnabled: true,
+    objectIdField: 'id',
   });
 
   layer.on('edits', (evt) => {
-    handleEdit(evt);
+    handleEdit(evt, layer);
   });
 
   map.add(layer);

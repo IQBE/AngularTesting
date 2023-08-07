@@ -1,0 +1,28 @@
+{
+  "edits": {
+    "deleteFeatures": [
+      {
+        "aggregateGeometries": null,
+        "geometry": null,
+        "symbol": null,
+        "attributes": { "id": "FGZH-26" },
+        "popupTemplate": null
+      }
+    ],
+    "addFeatures": [],
+    "updateFeatures": [],
+    "addAttachments": [],
+    "updateAttachments": [],
+    "deleteAttachments": [],
+    "addAssetFeatures": []
+  },
+  "addedFeatures": [],
+  "updatedFeatures": [],
+  "deletedFeatures": [
+    { "objectId": "FGZH-26", "globalId": null, "error": null }
+  ],
+  "addedAttachments": [],
+  "updatedAttachments": [],
+  "deletedAttachments": [],
+  "exceededTransferLimit": false
+}

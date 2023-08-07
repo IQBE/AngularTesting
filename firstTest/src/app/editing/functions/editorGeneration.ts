@@ -1,22 +1,50 @@
 import Editor from '@arcgis/core/widgets/Editor';
 import MapView from '@arcgis/core/views/MapView';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
+import FieldElement from '@arcgis/core/form/elements/FieldElement';
+import SwitchInput from '@arcgis/core/form/elements/inputs/SwitchInput';
 
 // DOCS:https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Editor.html#layerInfos
+// DOCS SUCK #SAD
 
 export const generateEditor = (view: MapView, originalLayer: GeoJSONLayer) => {
   const editor: Editor = new Editor({
     view: view,
-    //@ts-ignore
-    layerInfos: [{ layer: originalLayer }],
-    enabled: true, // Default is true, set to false to disable editing functionality.
-    addEnabled: true, // Default is true, set to false to disable the ability to add a new feature.
-    updateEnabled: true, // Default is true, set to false to disable the ability to edit an existing feature.
-    deleteEnabled: true, // Default is true, set to false to disable the ability to delete features.
-    attributeUpdatesEnabled: true, // Default is true, set to false to disable the ability to edit attributes in the update workflow.
-    geometryUpdatesEnabled: true, // Default is true, set to false to disable the ability to edit feature geometries in the update workflow.
-    attachmentsOnCreateEnabled: true, //Default is true, set to false to disable the ability to work with attachments while creating features.
-    attachmentsOnUpdateEnabled: true, //Default is true, set to false to disable the ability to work with attachments while updating/deleting features.
+    layerInfos: [
+      {
+        //@ts-ignore
+        layer: originalLayer,
+        //@ts-ignore
+        formTemplate: {
+          elements: [
+            // "id": "HTA-51", "ssp_id": "test", "sheetnr": "tesd", "highlight": 1
+            // new FieldElement({
+            //   fieldName: 'id',
+            //   label: 'ID',
+            //   // input: {
+            //   //   type: ''
+            //   // }
+            // }),
+            new FieldElement({
+              fieldName: 'ssp_id',
+              label: 'SSP ID',
+            }),
+            new FieldElement({
+              fieldName: 'sheetnr',
+              label: 'Sheet Number',
+            }),
+            new FieldElement({
+              fieldName: 'highlight',
+              label: 'Highlight',
+              input: new SwitchInput({
+                offValue: 0,
+                onValue: 1,
+              }),
+            }),
+          ],
+        },
+      },
+    ],
   });
 
   view.ui.add(editor, 'top-right');
