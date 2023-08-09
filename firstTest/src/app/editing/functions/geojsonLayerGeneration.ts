@@ -27,16 +27,24 @@ export const generateGeoJSONLayer = (
         type: 'oid',
       },
       {
-        name: 'ssp_id',
-        type: 'string',
-      },
-      {
-        name: 'sheetnr',
-        type: 'string',
-      },
-      {
-        name: 'highlight',
+        name: 'line_code',
         type: 'integer',
+      },
+      {
+        name: 'track_code',
+        type: 'integer',
+      },
+      {
+        name: 'max_urgency',
+        type: 'double',
+      },
+      {
+        name: 'season',
+        type: 'string',
+      },
+      {
+        name: 'side',
+        type: 'string',
       },
     ],
     renderer: renderer,

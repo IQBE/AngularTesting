@@ -7,7 +7,8 @@ import { generateMap } from './functions/mapGeneration';
 import { generateGeoJSONLayer } from './functions/geojsonLayerGeneration';
 import { generateEditor } from './functions/editorGeneration';
 
-import data from '../../data/test.geojson.json';
+// import data from '../../data/test.geojson.json';
+// import data from '../../data/apiData.geojson.json';
 import { generateSearch } from './functions/searchGeneration';
 import { generateCompass } from './functions/compassGeneration';
 
@@ -18,21 +19,29 @@ import { generateCompass } from './functions/compassGeneration';
 })
 export class EditingComponent implements AfterViewInit {
   @ViewChild('mapViewDiv', { static: true }) private mapViewEl!: ElementRef;
+  //@ts-ignore
 
   constructor() {
     EsriConfig.apiKey = ArcConf.apiKey;
     EsriConfig.applicationName = ArcConf.applicationName;
+    console.log('fetching data...'); // Debug
+    fetch('http://20.55.78.111:8000/dashboard/alert/')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.initializeMapView(data as GeoJsonObject);
+      })
+      .catch((err) => console.error(err));
   }
 
-  ngAfterViewInit(): void {
+  private initializeMapView(data: GeoJsonObject): void {
+    console.log(data); // Check data
     const { map, mapView, legend } = generateMap(this.mapViewEl);
-    const alertLayer = generateGeoJSONLayer(
-      'alertLayer',
-      map,
-      data as GeoJsonObject
-    );
+    const alertLayer = generateGeoJSONLayer('alertLayer', map, data);
     const editor = generateEditor(mapView, alertLayer);
     const search = generateSearch(mapView);
     const compass = generateCompass(mapView);
+    console.log(alertLayer.get('url')); // Check if data is in the layer
   }
+
+  ngAfterViewInit(): void {}
 }
