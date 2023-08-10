@@ -1,12 +1,20 @@
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
 
 export const handleEdit = (evt: any, layer: GeoJSONLayer) => {
-  if (evt.edits.deleteFeatures.length > 0) {
-    const ID = evt.edits.deleteFeatures[0].attributes.id;
-    console.log('Type: Delete\nID: ' + ID);
-  } else if (evt.edits.addFeatures.length > 0) {
-    const ID = evt.edits.addFeatures[0].attributes.id;
-    console.log('Type: Add\nID: ' + ID);
+  if (evt.deletedFeatures.length > 0) {
+    deletePolygon(evt.deletedFeatures[0].objectId);
+  } else if (evt.addedFeatures.length > 0) {
+    createPolygon(evt.addedFeatures[0].objectId, evt.edits.addFeatures[0]);
+  } else {
+    console.log('UNKNOWN EDIT TYPE:');
+    console.log(evt);
   }
-  console.log('Edit detected! Data:\n' + JSON.stringify(evt));
 };
+
+const createPolygon = (id: number, properties: object) => {};
+
+const deletePolygon = (id: number) => {
+  console.log('Type: Add\nID: ' + id);
+};
+
+const updatePolygon = () => {};

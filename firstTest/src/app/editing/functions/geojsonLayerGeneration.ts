@@ -35,6 +35,10 @@ export const generateGeoJSONLayer = (
         type: 'integer',
       },
       {
+        name: 'side',
+        type: 'string',
+      },
+      {
         name: 'max_urgency',
         type: 'double',
       },
@@ -42,14 +46,10 @@ export const generateGeoJSONLayer = (
         name: 'season',
         type: 'string',
       },
-      {
-        name: 'side',
-        type: 'string',
-      },
     ],
     renderer: renderer,
     labelingInfo: [labelClass],
-    // popupTemplate: popupTemplate,
+    popupTemplate: popupTemplate,
     editingEnabled: true,
     objectIdField: 'id',
   });

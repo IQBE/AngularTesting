@@ -7,8 +7,6 @@ import { generateMap } from './functions/mapGeneration';
 import { generateGeoJSONLayer } from './functions/geojsonLayerGeneration';
 import { generateEditor } from './functions/editorGeneration';
 
-// import data from '../../data/test.geojson.json';
-// import data from '../../data/apiData.geojson.json';
 import { generateSearch } from './functions/searchGeneration';
 import { generateCompass } from './functions/compassGeneration';
 
@@ -24,7 +22,9 @@ export class EditingComponent implements AfterViewInit {
   constructor() {
     EsriConfig.apiKey = ArcConf.apiKey;
     EsriConfig.applicationName = ArcConf.applicationName;
-    console.log('fetching data...'); // Debug
+  }
+
+  ngAfterViewInit(): void {
     fetch('http://20.55.78.111:8000/dashboard/alert/')
       .then((resp) => resp.json())
       .then((data) => {
@@ -34,14 +34,12 @@ export class EditingComponent implements AfterViewInit {
   }
 
   private initializeMapView(data: GeoJsonObject): void {
-    console.log(data); // Check data
+    // console.log(data); // DEBUG: Check data
     const { map, mapView, legend } = generateMap(this.mapViewEl);
     const alertLayer = generateGeoJSONLayer('alertLayer', map, data);
     const editor = generateEditor(mapView, alertLayer);
     const search = generateSearch(mapView);
     const compass = generateCompass(mapView);
-    console.log(alertLayer.get('url')); // Check if data is in the layer
+    // console.log(alertLayer.get('url')); // DEBUG: Check if data is in the layer
   }
-
-  ngAfterViewInit(): void {}
 }

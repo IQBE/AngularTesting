@@ -3,6 +3,7 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 
 import { generateLegend } from './legendGeneration';
+import SpatialReference from '@arcgis/core/geometry/SpatialReference';
 
 export const generateMap = (mapViewEl: ElementRef) => {
   const map: Map = new Map({
