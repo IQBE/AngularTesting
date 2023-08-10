@@ -17,7 +17,5 @@ export const generateMap = (mapViewEl: ElementRef) => {
     zoom: 8,
   });
 
-  const legend = generateLegend(mapView);
-
-  return { map, mapView, legend };
+  return { map, mapView };
 };

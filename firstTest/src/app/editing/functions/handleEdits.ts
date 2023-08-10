@@ -11,7 +11,10 @@ export const handleEdit = (evt: any, layer: GeoJSONLayer) => {
   }
 };
 
-const createPolygon = (id: number, properties: object) => {};
+const createPolygon = (id: number, properties: object) => {
+  console.log('ID: ' + id);
+  console.log(properties);
+};
 
 const deletePolygon = (id: number) => {
   console.log('Type: Add\nID: ' + id);
