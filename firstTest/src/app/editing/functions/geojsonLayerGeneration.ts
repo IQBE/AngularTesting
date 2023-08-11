@@ -122,16 +122,7 @@ export const generateNotificationLayer = (map: Map, data: GeoJsonObject) => {
 export const generateEditLayer = (map: Map) => {
   const data = {
     type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          coordinates: [4, 50],
-          type: 'Point',
-        },
-      },
-    ],
+    features: [],
   };
 
   const blob: Blob = new Blob([JSON.stringify(data)], {
@@ -142,42 +133,61 @@ export const generateEditLayer = (map: Map) => {
   const layer: GeoJSONLayer = new GeoJSONLayer({
     title: 'Editing',
     url: url,
+    geometryType: 'polygon',
     fields: [
       {
         name: 'id',
+        alias: 'ID',
         type: 'oid',
+        nullable: false,
       },
       {
         name: 'line_code',
+        alias: 'Line',
         type: 'integer',
+        nullable: false,
       },
       {
         name: 'track_code',
+        alias: 'Track',
         type: 'integer',
+        nullable: false,
       },
       {
         name: 'measure_start',
+        alias: 'Begin measure',
         type: 'double',
+        nullable: true,
       },
       {
         name: 'measure_end',
+        alias: 'End measure',
         type: 'double',
+        nullable: true,
       },
       {
         name: 'status',
+        alias: 'Status',
         type: 'string',
+        nullable: false,
       },
       {
         name: 'next_check',
+        alias: 'Next check',
         type: 'date', // Might also be a string...
+        nullable: false,
       },
       {
         name: 'terrain_owner',
+        alias: 'Owner',
         type: 'string',
+        nullable: false,
       },
       {
         name: 'description',
+        alias: 'Description',
         type: 'string',
+        nullable: true,
       },
     ],
     renderer: editRenderer,

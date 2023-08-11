@@ -10,7 +10,6 @@ import {
   generateNotificationLayer,
 } from './functions/geojsonLayerGeneration';
 import { generateEditor } from './functions/editorGeneration';
-
 import { generateSearch } from './functions/searchGeneration';
 import { generateCompass } from './functions/compassGeneration';
 import { generateLegend } from './functions/legendGeneration';
@@ -22,7 +21,6 @@ import { generateLegend } from './functions/legendGeneration';
 })
 export class EditingComponent implements AfterViewInit {
   @ViewChild('mapViewDiv', { static: true }) private mapViewEl!: ElementRef;
-  //@ts-ignore
 
   constructor() {
     EsriConfig.apiKey = ArcConf.apiKey;

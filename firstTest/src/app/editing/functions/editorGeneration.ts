@@ -13,6 +13,10 @@ export const generateEditor = (view: MapView, originalLayer: GeoJSONLayer) => {
         //@ts-ignore
         formTemplate: {
           elements: [
+            // new FieldElement({
+            //   fieldName: 'id',
+            //   label: 'ID',
+            // }),
             new FieldElement({
               fieldName: 'line_code',
               label: 'Line',
@@ -21,17 +25,29 @@ export const generateEditor = (view: MapView, originalLayer: GeoJSONLayer) => {
               fieldName: 'track_code',
               label: 'Track',
             }),
+            // new FieldElement({
+            //   fieldName: 'measure_start',
+            //   label: 'Begin measure',
+            // }),
+            // new FieldElement({
+            //   fieldName: 'measure_end',
+            //   label: 'End measures',
+            // }),
             new FieldElement({
-              fieldName: 'side',
-              label: 'Side',
+              fieldName: 'status',
+              label: 'Status',
             }),
             new FieldElement({
-              fieldName: 'max_urgency',
-              label: 'Urgency',
+              fieldName: 'next_check',
+              label: 'Next check',
             }),
             new FieldElement({
-              fieldName: 'season',
-              label: 'Season',
+              fieldName: 'terrain_owner',
+              label: 'Owner',
+            }),
+            new FieldElement({
+              fieldName: 'description',
+              label: 'Description',
             }),
           ],
         },
