@@ -170,6 +170,7 @@ export const generateEditLayer = (map: Map) => {
         alias: 'Status',
         type: 'string',
         nullable: false,
+        defaultValue: 'NEW',
       },
       {
         name: 'next_check',

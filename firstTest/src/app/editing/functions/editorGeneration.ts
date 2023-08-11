@@ -36,6 +36,19 @@ export const generateEditor = (view: MapView, originalLayer: GeoJSONLayer) => {
             new FieldElement({
               fieldName: 'status',
               label: 'Status',
+              input: {
+                type: 'combo-box',
+              },
+              domain: {
+                type: 'coded-value',
+                codedValues: [
+                  { code: 'NEW', name: 'New' },
+                  { code: 'IGNORE', name: 'Ignore' },
+                  { code: 'IN_PROGRESS', name: 'In progress' },
+                  { code: 'CONTRACTOR_DONE', name: 'Contractor done' },
+                  { code: 'INFRABEL_DONE', name: 'Completed' },
+                ],
+              },
             }),
             new FieldElement({
               fieldName: 'next_check',
