@@ -57,7 +57,7 @@ export class EditingComponent implements AfterViewInit {
     const { map, mapView } = generateMap(this.mapViewEl);
     const alertLayer = generateAlertLayer(map, alertData);
     const notificationLayer = generateNotificationLayer(map, notificationData);
-    const editLayer = generateEditLayer(map); // TODO: Generate editing layer
+    const editLayer = generateEditLayer(map);
     const legend = generateLegend(mapView, [
       alertLayer,
       notificationLayer,

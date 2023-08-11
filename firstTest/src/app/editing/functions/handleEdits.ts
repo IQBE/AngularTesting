@@ -12,8 +12,15 @@ export const handleEdit = (evt: any, layer: GeoJSONLayer) => {
 };
 
 const createPolygon = (id: number, properties: object) => {
-  console.log('ID: ' + id);
-  console.log(properties);
+  console.log('New polygon!\nID: ' + id);
+  const newPolygon = {
+    //@ts-ignore
+    projected_geom: JSON.stringify(properties?.geometry?.rings[0]),
+    //@ts-ignore
+    ...properties?.attributes,
+  };
+  console.log(JSON.stringify(newPolygon));
+  // TODO: API POST request
 };
 
 const deletePolygon = (id: number) => {

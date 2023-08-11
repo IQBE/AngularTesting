@@ -61,6 +61,9 @@ export const generateEditor = (view: MapView, originalLayer: GeoJSONLayer) => {
             new FieldElement({
               fieldName: 'description',
               label: 'Description',
+              input: {
+                type: 'text-area',
+              },
             }),
           ],
         },

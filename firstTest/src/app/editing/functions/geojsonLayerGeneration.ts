@@ -182,6 +182,7 @@ export const generateEditLayer = (map: Map) => {
         name: 'terrain_owner',
         alias: 'Owner',
         type: 'string',
+        defaultValue: 'Infrabel',
         nullable: false,
       },
       {
