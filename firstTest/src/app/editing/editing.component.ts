@@ -3,6 +3,7 @@ import ArcConf from 'src/config/esri-config.json';
 import EsriConfig from '@arcgis/core/config';
 import { GeoJsonObject } from 'geojson';
 
+//@ts-ignore
 import { environment } from 'src/config/api-config';
 
 import { generateMap } from './functions/mapGeneration';
