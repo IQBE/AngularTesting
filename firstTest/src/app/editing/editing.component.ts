@@ -1,7 +1,9 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import ArcConf from '../../config/esri-config.json';
+import ArcConf from 'src/config/esri-config.json';
 import EsriConfig from '@arcgis/core/config';
 import { GeoJsonObject } from 'geojson';
+
+import { environment } from 'src/config/api-config';
 
 import { generateMap } from './functions/mapGeneration';
 import {
@@ -33,13 +35,11 @@ export class EditingComponent implements AfterViewInit {
 
   private async populateData(): Promise<void> {
     try {
-      const alertResp = await fetch(
-        'http://20.55.78.111:8000/dashboard/alert/'
-      );
+      const alertResp = await fetch(`${environment.apiUrl}alert/`);
       const alertData = await alertResp.json();
 
       const notificationResp = await fetch(
-        'http://20.55.78.111:8000/dashboard/notification/'
+        `${environment.apiUrl}notification/`
       );
       const notificationData = await notificationResp.json();
 

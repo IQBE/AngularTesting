@@ -11,20 +11,31 @@ export const handleEdit = (evt: any, layer: GeoJSONLayer) => {
   }
 };
 
-const createPolygon = (id: number, properties: object) => {
-  console.log('New polygon!\nID: ' + id);
+const createPolygon = async (id: number, properties: object) => {
   const newPolygon = {
-    //@ts-ignore
-    projected_geom: JSON.stringify(properties?.geometry?.rings[0]),
-    //@ts-ignore
-    ...properties?.attributes,
+    type: 'Feature',
+    properties: {
+      //@ts-ignore
+      ...properties?.attributes,
+    },
+    geometry: {
+      type: 'MultiPolygon',
+      //@ts-ignore
+      coordinates: [properties?.geometry?.rings],
+    },
   };
   console.log(JSON.stringify(newPolygon));
   // TODO: API POST request
 };
 
-const deletePolygon = (id: number) => {
+const deletePolygon = async (id: number) => {
   console.log('Type: Add\nID: ' + id);
+  const resp = await fetch(
+    `http://20.55.78.111:8000/dashboard/notification/${id}/`,
+    { method: 'DELETE' }
+  );
+  const data = await resp.json();
+  console.log(data);
 };
 
 const updatePolygon = () => {};

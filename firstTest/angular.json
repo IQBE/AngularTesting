@@ -48,6 +48,14 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/config/api-config.ts",
+                  "with": "src/config/api-config.local.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -60,6 +68,9 @@
             },
             "development": {
               "browserTarget": "firstTest:build:development"
+            },
+            "local": {
+              "browserTarget": "firstTest:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -82,5 +93,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "599457cf-e04b-4471-b371-4a59a5243d04"
   }
 }

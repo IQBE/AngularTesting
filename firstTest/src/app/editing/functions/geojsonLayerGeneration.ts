@@ -176,7 +176,7 @@ export const generateEditLayer = (map: Map) => {
         name: 'next_check',
         alias: 'Next check',
         type: 'date', // Might also be a string...
-        nullable: false,
+        nullable: true,
       },
       {
         name: 'terrain_owner',

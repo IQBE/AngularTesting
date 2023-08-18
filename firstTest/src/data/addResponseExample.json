@@ -1,36 +1,16 @@
 {
-  "edits": {
-    "addFeatures": [
-      {
-        "aggregateGeometries": null,
-        "geometry": {
-          "spatialReference": { "latestWkid": 3857, "wkid": 102100 },
-          "rings": [
-            [
-              [397068.1474301444, 6671099.311321929],
-              [411896.93091744866, 6665786.937856116],
-              [397985.3917695653, 6656423.401891195],
-              [397068.1474301444, 6671099.311321929]
-            ]
-          ]
-        },
-        "symbol": null,
-        "attributes": { "ssp_id": "test", "sheetnr": "tesd", "highlight": 1 },
-        "popupTemplate": null
-      }
-    ],
-    "updateFeatures": [],
-    "deleteFeatures": [],
-    "addAttachments": [],
-    "updateAttachments": [],
-    "deleteAttachments": [],
-    "addAssetFeatures": []
-  },
-  "addedFeatures": [{ "objectId": null, "globalId": null, "error": null }],
-  "updatedFeatures": [],
-  "deletedFeatures": [],
-  "addedAttachments": [],
-  "updatedAttachments": [],
-  "deletedAttachments": [],
-  "exceededTransferLimit": false
+  "geom": [
+    [552547.0346050259, 6632078.208382373],
+    [572114.91384603, 6602114.893294585],
+    [541540.102531961, 6601809.1451814445],
+    [552547.0346050259, 6632078.208382373]
+  ],
+  "measure_start": null,
+  "measure_end": null,
+  "status": "NEW",
+  "terrain_owner": "Infrabel",
+  "description": "This is a test by Ilya",
+  "line_code": 1,
+  "track_code": 2,
+  "next_check": 1651738282000
 }
